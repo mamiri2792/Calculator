@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
+  <meta
+    name="description"
+    content="A fast, simple calculator app."
+  >
+
+  <meta name="theme-color" content="#080b10">
+
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="style.css">
+
+  <title>CalcNova</title>
+</head>
+
+<body>
+
+  <main class="app">
+
+    <!-- APP HEADER -->
+
+    <header class="app-header">
+
+      <div>
+        <div class="app-name">CalcNova</div>
+        <div class="app-subtitle">Calculator</div>
+      </div>
+
+      <button
+        id="historyButton"
+        class="header-button"
+        aria-label="Open calculation history"
+      >
+        History
+      </button>
+
+    </header>
+
+
+    <!-- CALCULATOR -->
+
+    <section class="calculator">
+
+      <!-- DISPLAY -->
+
+      <div class="display-container">
+
+        <div
+          id="expression"
+          class="expression"
+          aria-label="Current expression"
+        ></div>
+
+        <div
+          id="display"
+          class="display"
+          aria-live="polite"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <!-- BUTTONS -->
+
+      <div class="buttons">
+
+        <button
+          class="calculator-button function"
+          data-action="clear"
+        >
+          AC
+        </button>
+
+        <button
+          class="calculator-button function"
+          data-action="delete"
+        >
+          ⌫
+        </button>
+
+        <button
+          class="calculator-button function"
+          data-action="percent"
+        >
+          %
+        </button>
+
+        <button
+          class="calculator-button operator"
+          data-operator="/"
+        >
+          ÷
+        </button>
+
+
+        <button
+          class="calculator-button"
+          data-number="7"
+        >
+          7
+        </button>
+
+        <button
+          class="calculator-button"
+          data-number="8"
+        >
+          8
+        </button>
+
+        <button
+          class="calculator-button"
+          data-number="9"
+        >
+          9
+        </button>
+
+        <button
+          class="calculator-button operator"
+          data-operator="*"
+        >
+          ×
+        </button>
+
+
+        <button
+          class="calculator-button"
+          data-number="4"
+        >
+          4
+        </button>
+
+        <button
+          class="calculator-button"
+          data-number="5"
+        >
+          5
+        </button>
+
+        <button
+          class="calculator-button"
+          data-number="6"
+        >
+          6
+        </button>
+
+        <button
+          class="calculator-button operator"
+          data-operator="-"
+        >
+          −
+        </button>
+
+
+        <button
+          class="calculator-button"
+          data-number="1"
+        >
+          1
+        </button>
+
+        <button
+          class="calculator-button"
+          data-number="2"
+        >
+          2
+        </button>
+
+        <button
+          class="calculator-button"
+          data-number="3"
+        >
+          3
+        </button>
+
+        <button
+          class="calculator-button operator"
+          data-operator="+"
+        >
+          +
+        </button>
+
+
+        <button
+          class="calculator-button function"
+          data-action="sign"
+        >
+          +/−
+        </button>
+
+        <button
+          class="calculator-button zero"
+          data-number="0"
+        >
+          0
+        </button>
+
+        <button
+          class="calculator-button"
+          data-action="decimal"
+        >
+          .
+        </button>
+
+
+        <button
+          class="calculator-button equals"
+          data-action="equals"
+        >
+          =
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- INSTALL APP BUTTON -->
+
+    <button
+      id="installButton"
+      class="install-button"
+      hidden
+    >
+      Install CalcNova
+    </button>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+      <span>CalcNova</span>
+      <span>•</span>
+      <span>Works offline</span>
+    </footer>
+
+  </main>
+
+
+  <!-- HISTORY PANEL -->
+
+  <aside
+    id="historyPanel"
+    class="history-panel"
+    aria-hidden="true"
+  >
+
+    <div class="history-header">
+
+      <h2>History</h2>
+
+      <button
+        id="closeHistory"
+        class="close-button"
+        aria-label="Close history"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      id="historyList"
+      class="history-list"
+    >
+      <p class="empty-history">
+        No calculations yet.
+      </p>
+    </div>
+
+
+    <button
+      id="clearHistory"
+      class="clear-history"
+    >
+      Clear History
+    </button>
+
+  </aside>
+
+
+  <!-- BACKDROP -->
+
+  <div
+    id="backdrop"
+    class="backdrop"
+    hidden
+  ></div>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script src="app.js"></script>
+
+</body>
+</html>
