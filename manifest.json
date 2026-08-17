@@ -1,0 +1,19 @@
+{
+  "name": "CalcNova Calculator",
+  "short_name": "CalcNova",
+  "description": "A fast, simple calculator app that works offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#080b10",
+  "theme_color": "#080b10",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
