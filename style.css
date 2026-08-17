@@ -1,0 +1,391 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background: #080b10;
+  --surface: #111720;
+  --surface-light: #1a222d;
+  --button: #202a36;
+  --button-hover: #2a3542;
+  --text: #ffffff;
+  --muted: #8995a3;
+  --operator: #ff9500;
+  --function: #3a4654;
+  --equals: #00d632;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      #172334 0%,
+      var(--background) 48%
+    );
+
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(0, 214, 50, 0.5);
+  outline-offset: 3px;
+}
+
+
+/* APP */
+
+.app {
+  width: min(430px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 18px 16px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* HEADER */
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 2px 20px;
+}
+
+.app-name {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.app-subtitle {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.header-button {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.header-button:active {
+  transform: scale(0.96);
+}
+
+
+/* CALCULATOR */
+
+.calculator {
+  width: 100%;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: rgba(17, 23, 32, 0.92);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* DISPLAY */
+
+.display-container {
+  min-height: 145px;
+  padding: 20px 16px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #050709;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.expression {
+  width: 100%;
+  min-height: 24px;
+  margin-bottom: 5px;
+  color: var(--muted);
+  text-align: right;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.expression::-webkit-scrollbar {
+  display: none;
+}
+
+.display {
+  width: 100%;
+  color: var(--text);
+  text-align: right;
+  font-size: clamp(38px, 10vw, 56px);
+  font-weight: 300;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.display::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* BUTTON GRID */
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 11px;
+}
+
+.calculator-button {
+  min-height: 70px;
+  border: 0;
+  border-radius: 18px;
+  background: var(--button);
+  color: var(--text);
+  font-size: 23px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.1s ease,
+    filter 0.1s ease,
+    background 0.1s ease;
+  touch-action: manipulation;
+}
+
+.calculator-button:hover {
+  background: var(--button-hover);
+}
+
+.calculator-button:active {
+  transform: scale(0.94);
+}
+
+.calculator-button.function {
+  background: var(--function);
+}
+
+.calculator-button.operator {
+  background: var(--operator);
+  color: #ffffff;
+}
+
+.calculator-button.equals {
+  background: var(--equals);
+  color: #031006;
+}
+
+.calculator-button.zero {
+  grid-column: span 2;
+}
+
+
+/* INSTALL */
+
+.install-button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 15px;
+  border: 1px solid rgba(0, 214, 50, 0.3);
+  border-radius: 14px;
+  background: rgba(0, 214, 50, 0.08);
+  color: var(--equals);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 22px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+
+/* HISTORY PANEL */
+
+.history-panel {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  right: 0;
+  width: min(380px, 92vw);
+  height: 100vh;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  background: #0c1118;
+  border-left: 1px solid var(--border);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.35);
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+
+.history-panel.open {
+  transform: translateX(0);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.history-header h2 {
+  font-size: 22px;
+}
+
+.close-button {
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--surface-light);
+  color: var(--text);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+
+/* HISTORY LIST */
+
+.history-list {
+  flex: 1;
+  padding: 18px 0;
+  overflow-y: auto;
+}
+
+.history-item {
+  margin-bottom: 10px;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.history-expression {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.history-result {
+  margin-top: 3px;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.empty-history {
+  padding-top: 40px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+}
+
+
+/* CLEAR HISTORY */
+
+.clear-history {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid rgba(255, 80, 80, 0.25);
+  border-radius: 12px;
+  background: rgba(255, 80, 80, 0.08);
+  color: #ff8a8a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+/* BACKDROP */
+
+.backdrop {
+  position: fixed;
+  z-index: 150;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+
+/* SMALL PHONES */
+
+@media (max-width: 360px) {
+
+  .app {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .calculator {
+    padding: 12px;
+    border-radius: 22px;
+  }
+
+  .buttons {
+    gap: 8px;
+  }
+
+  .calculator-button {
+    min-height: 62px;
+    border-radius: 15px;
+    font-size: 20px;
+  }
+
+  .display-container {
+    min-height: 125px;
+  }
+}
+
+
+/* LARGER SCREENS */
+
+@media (min-width: 600px) {
+
+  body {
+    padding: 30px 0;
+  }
+
+  .app {
+    min-height: auto;
+  }
+}
